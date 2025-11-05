@@ -32,17 +32,31 @@ class PurchaseInvoiceItem(Document):
 		cost_center: DF.Link | None
 		deferred_expense_account: DF.Link | None
 		description: DF.TextEditor | None
+		disc_1: DF.Currency
+		disc_1_percent: DF.Float
+		disc_2: DF.Currency
+		disc_2_percent: DF.Float
+		disc_3: DF.Currency
+		disc_3_percent: DF.Float
 		discount_amount: DF.Currency
 		discount_percentage: DF.Percent
 		distributed_discount_amount: DF.Currency
 		enable_deferred_expense: DF.Check
 		expense_account: DF.Link | None
 		from_warehouse: DF.Link | None
+		harga: DF.Currency
+		hj_barcode: DF.Currency
+		hj_barcode_percent: DF.Float
+		hj_ecer: DF.Currency
+		hj_ecer_percent: DF.Float
+		hj_grosir: DF.Currency
+		hj_grosir_percent: DF.Float
 		image: DF.Attach | None
 		include_exploded_items: DF.Check
 		is_fixed_asset: DF.Check
 		is_free_item: DF.Check
 		item_code: DF.Link | None
+		item_code_2: DF.Data | None
 		item_group: DF.Link | None
 		item_name: DF.Data
 		item_tax_amount: DF.Currency
@@ -90,6 +104,8 @@ class PurchaseInvoiceItem(Document):
 		stock_qty: DF.Float
 		stock_uom: DF.Link | None
 		stock_uom_rate: DF.Currency
+		subtotal: DF.Currency
+		text_harga: DF.Text | None
 		total_weight: DF.Float
 		uom: DF.Link
 		use_serial_batch_fields: DF.Check

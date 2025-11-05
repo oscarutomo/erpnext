@@ -11,6 +11,7 @@
   "product_bundle",
   "col_break1",
   "item_name",
+  "item_code_2",
   "description_section",
   "description",
   "brand",
@@ -18,15 +19,6 @@
   "item_group",
   "image",
   "image_view",
-  "quantity_and_rate",
-  "received_qty",
-  "qty",
-  "rejected_qty",
-  "col_break2",
-  "uom",
-  "conversion_factor",
-  "stock_uom",
-  "stock_qty",
   "sec_break1",
   "price_list_rate",
   "col_break3",
@@ -41,16 +33,48 @@
   "distributed_discount_amount",
   "base_rate_with_margin",
   "sec_break2",
-  "rate",
-  "amount",
   "item_tax_template",
   "col_break4",
+  "qty",
+  "harga",
+  "subtotal",
   "base_rate",
   "base_amount",
   "pricing_rules",
   "stock_uom_rate",
   "is_free_item",
   "apply_tds",
+  "section_break_puqg",
+  "disc_1_percent",
+  "disc_1",
+  "disc_2_percent",
+  "disc_2",
+  "disc_3_percent",
+  "disc_3",
+  "column_break_gjzm",
+  "section_break_pbtw",
+  "column_break_suzy",
+  "column_break_xtdz",
+  "amount",
+  "rate",
+  "harga_jual_section",
+  "column_break_pfpm",
+  "text_harga",
+  "column_break_naej",
+  "hj_grosir_percent",
+  "hj_grosir",
+  "hj_ecer_percent",
+  "hj_ecer",
+  "hj_barcode_percent",
+  "hj_barcode",
+  "quantity_and_rate",
+  "received_qty",
+  "rejected_qty",
+  "col_break2",
+  "uom",
+  "conversion_factor",
+  "stock_uom",
+  "stock_qty",
   "section_break_22",
   "net_rate",
   "net_amount",
@@ -182,6 +206,7 @@
   {
    "fieldname": "quantity_and_rate",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Quantity and Rate"
   },
   {
@@ -197,7 +222,7 @@
    "fieldname": "qty",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Accepted Qty",
+   "label": "Qty",
    "oldfieldname": "qty",
    "oldfieldtype": "Currency",
    "reqd": 1
@@ -248,7 +273,8 @@
   },
   {
    "fieldname": "sec_break1",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "hidden": 1
   },
   {
    "fieldname": "price_list_rate",
@@ -288,22 +314,20 @@
   },
   {
    "bold": 1,
-   "columns": 3,
+   "columns": 1,
    "fieldname": "rate",
    "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Rate",
+   "label": "Harga Nett",
    "oldfieldname": "import_rate",
    "oldfieldtype": "Currency",
    "options": "currency",
    "reqd": 1
   },
   {
-   "columns": 2,
+   "columns": 1,
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Amount",
+   "label": "Total",
    "oldfieldname": "import_amount",
    "oldfieldtype": "Currency",
    "options": "currency",
@@ -315,8 +339,10 @@
    "fieldtype": "Column Break"
   },
   {
+   "default": "0",
    "fieldname": "base_rate",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Rate (Company Currency)",
    "oldfieldname": "rate",
    "oldfieldtype": "Currency",
@@ -326,8 +352,10 @@
    "reqd": 1
   },
   {
+   "default": "0",
    "fieldname": "base_amount",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Amount (Company Currency)",
    "oldfieldname": "amount",
    "oldfieldtype": "Currency",
@@ -348,13 +376,15 @@
    "default": "0",
    "fieldname": "is_free_item",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Is Free Item",
    "print_hide": 1,
    "read_only": 1
   },
   {
    "fieldname": "section_break_22",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "hidden": 1
   },
   {
    "fieldname": "net_rate",
@@ -493,6 +523,7 @@
   {
    "fieldname": "item_tax_template",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Item Tax Template",
    "options": "Item Tax Template",
    "print_hide": 1
@@ -826,6 +857,7 @@
    "depends_on": "eval: doc.uom != doc.stock_uom",
    "fieldname": "stock_uom_rate",
    "fieldtype": "Currency",
+   "hidden": 1,
    "label": "Rate of Stock UOM",
    "no_copy": 1,
    "options": "currency",
@@ -844,6 +876,7 @@
    "collapsible_depends_on": "eval: doc.margin_type || doc.discount_amount || doc.distributed_discount_amount",
    "fieldname": "section_break_26",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Discount and Margin"
   },
   {
@@ -893,6 +926,7 @@
    "default": "1",
    "fieldname": "apply_tds",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Apply TDS"
   },
   {
@@ -979,18 +1013,184 @@
    "fieldtype": "Currency",
    "label": "Distributed Discount Amount",
    "options": "currency"
+  },
+  {
+   "bold": 1,
+   "columns": 3,
+   "fieldname": "harga",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Harga",
+   "oldfieldname": "import_rate",
+   "oldfieldtype": "Currency",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "subtotal",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Subtotal",
+   "oldfieldname": "import_amount",
+   "oldfieldtype": "Currency",
+   "options": "currency",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_puqg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "disc_1_percent",
+   "fieldtype": "Float",
+   "label": "Disc 1 %"
+  },
+  {
+   "fieldname": "column_break_gjzm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "disc_2_percent",
+   "fieldtype": "Float",
+   "label": "Disc 2 %"
+  },
+  {
+   "fieldname": "disc_3_percent",
+   "fieldtype": "Float",
+   "label": "Disc 3 %"
+  },
+  {
+   "fieldname": "disc_1",
+   "fieldtype": "Currency",
+   "label": "Disc 1 Rp"
+  },
+  {
+   "fieldname": "disc_3",
+   "fieldtype": "Currency",
+   "label": "Disc 3 Rp"
+  },
+  {
+   "fieldname": "disc_2",
+   "fieldtype": "Currency",
+   "label": "Disc 2 Rp"
+  },
+  {
+   "fieldname": "section_break_pbtw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "text_harga",
+   "fieldtype": "Text"
+  },
+  {
+   "fieldname": "column_break_xtdz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "harga_jual_section",
+   "fieldtype": "Section Break",
+   "label": "Harga Jual"
+  },
+  {
+   "columns": 1,
+   "fieldname": "hj_grosir_percent",
+   "fieldtype": "Float",
+   "label": "HJ Grosir %",
+   "non_negative": 1,
+   "oldfieldname": "import_amount",
+   "oldfieldtype": "Currency",
+   "options": "currency"
+  },
+  {
+   "columns": 1,
+   "fieldname": "hj_grosir",
+   "fieldtype": "Currency",
+   "label": "HJ Grosir",
+   "non_negative": 1,
+   "oldfieldname": "import_amount",
+   "oldfieldtype": "Currency",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_naej",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "hj_ecer_percent",
+   "fieldtype": "Float",
+   "label": "HJ Ecer %",
+   "non_negative": 1,
+   "oldfieldname": "import_amount",
+   "oldfieldtype": "Currency",
+   "options": "currency"
+  },
+  {
+   "columns": 1,
+   "fieldname": "hj_ecer",
+   "fieldtype": "Currency",
+   "label": "HJ Ecer",
+   "non_negative": 1,
+   "oldfieldname": "import_amount",
+   "oldfieldtype": "Currency",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "hj_barcode_percent",
+   "fieldtype": "Float",
+   "label": "HJ Barcode %",
+   "non_negative": 1,
+   "oldfieldname": "import_amount",
+   "oldfieldtype": "Currency",
+   "options": "currency"
+  },
+  {
+   "columns": 1,
+   "fieldname": "hj_barcode",
+   "fieldtype": "Currency",
+   "label": "HJ Barcode",
+   "non_negative": 1,
+   "oldfieldname": "import_amount",
+   "oldfieldtype": "Currency",
+   "options": "currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_pfpm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_suzy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "item_code.item_code_2",
+   "fieldname": "item_code_2",
+   "fieldtype": "Data",
+   "label": "Item Code 2",
+   "read_only": 1
   }
  ],
  "idx": 1,
  "istable": 1,
  "links": [],
+<<<<<<< Updated upstream
  "modified": "2025-10-14 13:01:54.441511",
+=======
+ "modified": "2025-11-05 15:40:45.046990",
+>>>>>>> Stashed changes
  "modified_by": "Administrator",
  "module": "Accounts",
  "name": "Purchase Invoice Item",
  "naming_rule": "Random",
  "owner": "Administrator",
  "permissions": [],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
